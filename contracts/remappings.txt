@@ -1,0 +1,3 @@
+    "v4-core/=.deps/v4-core-github/https:/raw.githubusercontent.com/Uniswap/v4-core/refs/tags/v4.0.0/",
+    "v4-periphery/=.deps/v4-periph-github/https:/raw.githubusercontent.com/Uniswap/v4-periphery/main/",
+    "@uniswap/v4-core/=.deps/v4-core-github/https:/raw.githubusercontent.com/Uniswap/v4-core/refs/tags/v4.0.0/"

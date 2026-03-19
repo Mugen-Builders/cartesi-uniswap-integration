@@ -1,0 +1,24 @@
+# Node / frontend
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Foundry / Solidity
+cache/
+out/
+artifacts/
+
+# Editor / OS
+.DS_Store
+.cursor/
+
+# Environment files (do NOT commit secrets)
+**/.env
+**/.env.*
+!**/.env.example
+
+.deps
+./.deps
