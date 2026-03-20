@@ -11,7 +11,7 @@ import {USDCVaultWithLiquidity} from "../src/USDCVaultWithLiquidity.sol";
 
 contract CallModifyLiquidityMeScript is Script {
     // Configure these values directly in-script.
-    address internal constant MODIFY_LIQUIDITY_ADDRESS = 0xB16bF76958Ea8EDdb16ab2d66D5d468817E3C645;
+    address internal constant MODIFY_LIQUIDITY_ADDRESS = 0x05C05F85Da3E41968Ba8EAc670eF9F5C4b9351B8;
     int24 internal constant ML_TICK_LOWER = -887220;
     int24 internal constant ML_TICK_UPPER = 887220;
     // In your prior run, 1_000_000 liquidityDelta pulled ~1 token each.
@@ -35,7 +35,9 @@ contract CallModifyLiquidityMeScript is Script {
         IERC20(USDT_ADDRESS).approve(MODIFY_LIQUIDITY_ADDRESS, APPROVAL_AMOUNT);
         // BalanceDelta delta =
         //     // ModifyLiquidity(MODIFY_LIQUIDITY_ADDRESS).modifyLiquidity_me{value: ML_ETH_VALUE}(params, ML_HOOK_DATA);
-            USDCVaultWithLiquidity(MODIFY_LIQUIDITY_ADDRESS).modifyLiquidity(params, ML_HOOK_DATA, false, false);
+            // USDCVaultWithLiquidity(MODIFY_LIQUIDITY_ADDRESS).modifyLiquidity(params, ML_HOOK_DATA, false, false);
+            USDCVaultWithLiquidity(MODIFY_LIQUIDITY_ADDRESS).withdrawToUser(address(0xbD8Eba8Bf9e56ad92F4C4Fc89D6CB88902535749), 1000000000);
+            
         vm.stopBroadcast();
 
         console.log("ModifyLiquidity:", MODIFY_LIQUIDITY_ADDRESS);

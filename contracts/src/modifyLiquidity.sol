@@ -13,7 +13,6 @@ import {FullMath} from "v4-core/src/libraries/FullMath.sol";
 import {FixedPoint96} from "v4-core/src/libraries/FixedPoint96.sol";
 import {SafeCallback} from "v4-periphery/src/base/SafeCallback.sol";
 import {LiquidityAmounts} from "v4-periphery/src/libraries/LiquidityAmounts.sol";
-import {PoolTestBase} from "./PoolTestBase.sol";
 import {Currency} from "v4-core/src/types/Currency.sol";
 import {TransientStateLibrary} from "v4-core/src/libraries/TransientStateLibrary.sol";
 import {IHooks} from "v4-core/src/interfaces/IHooks.sol";
