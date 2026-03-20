@@ -33,12 +33,12 @@ rollup_server = environ["ROLLUP_HTTP_SERVER_URL"]
 logger.info("HTTP rollup_server url is %s", rollup_server)
 
 # Config: vault = USDCVaultWithLiquidity (merged vault + Uniswap v4 LP)
-VAULT_ADDRESS = environ.get("VAULT_ADDRESS", "0x05C05F85Da3E41968Ba8EAc670eF9F5C4b9351B8")
+VAULT_ADDRESS = environ.get("VAULT_ADDRESS", "0xdf84b8858F2036ea837054E0543a3ad716d9058D")
 DEPLOY_THRESHOLD = int(environ.get("DEPLOY_THRESHOLD", "1000000000"))  # 1000 USDC (6 decimals)
 # Amount the application approves to the vault (1M USDC, 6 decimals); used by approve_vault voucher.
 VAULT_APPROVAL_AMOUNT = int(environ.get("VAULT_APPROVAL_AMOUNT", "10000000000000000000000"))  # 1_000_000 * 1e6
 # ERC20 Portal address (chain-specific; use cartesi address-book or deploy config)
-ERC20_PORTAL_ADDRESS = environ.get("ERC20_PORTAL_ADDRESS", "0xc700D6aDd016eECd59d989C028214Eaa0fCC0051").lower()
+ERC20_PORTAL_ADDRESS = environ.get("ERC20_PORTAL_ADDRESS", "0xACA6586A0Cf05bD831f2501E7B4aea550dA6562D").lower()
 USDC_ADDRESS = environ.get("USDC_ADDRESS", "0xe08760f90822cAb7755449091414AAF7e0b458c1").lower()
 USDT_ADDRESS = environ.get("USDT_ADDRESS", "0xF3c79e7B48d662b989b042d78C619C524D6FDd26").lower()
 # DApp Address Relayer: when msg_sender is this, payload is the application (dApp) contract address.

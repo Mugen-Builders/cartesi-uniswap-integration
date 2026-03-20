@@ -3,14 +3,14 @@ x-env: &env
   CARTESI_LOG_LEVEL: info
   CARTESI_AUTH_KIND: ${AUTH_KIND}
   CARTESI_BLOCKCHAIN_ID: ${BLOCKCHAIN_ID}
-  CARTESI_AUTH_PRIVATE_KEY_FILE: ${PRIVATE_KEY_FILE}
+  CARTESI_AUTH_PRIVATE_KEY: ${CARTESI_AUTH_PRIVATE_KEY}
   CARTESI_BLOCKCHAIN_WS_ENDPOINT: ${BLOCKCHAIN_WS_ENDPOINT}
   CARTESI_BLOCKCHAIN_HTTP_ENDPOINT: ${BLOCKCHAIN_HTTP_ENDPOINT}
   CARTESI_SNAPSHOTS_DIR: "/var/lib/cartesi-rollups-node/snapshot"
-  CARTESI_CONTRACTS_INPUT_BOX_ADDRESS: 0xc70074BDD26d8cF983Ca6A5b89b8db52D5850051
-  CARTESI_CONTRACTS_AUTHORITY_FACTORY_ADDRESS: 0xC7003566dD09Aa0fC0Ce201aC2769aFAe3BF0051
-  CARTESI_CONTRACTS_APPLICATION_FACTORY_ADDRESS: 0xc7006f70875BaDe89032001262A846D3Ee160051
-  CARTESI_CONTRACTS_SELF_HOSTED_APPLICATION_FACTORY_ADDRESS: 0xc700285Ab555eeB5201BC00CFD4b2CC8DED90051
+  CARTESI_CONTRACTS_INPUT_BOX_ADDRESS: 0x1b51e2992A2755Ba4D6F7094032DF91991a0Cfac
+  CARTESI_CONTRACTS_AUTHORITY_FACTORY_ADDRESS: 0x5E96408CFE423b01dADeD3bc867E6013135990cc
+  CARTESI_CONTRACTS_APPLICATION_FACTORY_ADDRESS: 0x26E758238CB6eC5aB70ce0dd52aF2d7b82e1972E
+  CARTESI_CONTRACTS_SELF_HOSTED_APPLICATION_FACTORY_ADDRESS: 0x010D3CbB4223F5bCc7b7B03cEE59f3aAea8eDb8A
   CARTESI_DATABASE_CONNECTION: postgres://postgres:password@database:5432/rollupsdb?sslmode=disable
   CARTESI_EPOCH_LENGTH: 1
   CARTESI_BLOCKCHAIN_DEFAULT_BLOCK: "latest"
@@ -22,7 +22,7 @@ secrets:
 services:
   database:
     container_name: database
-    image: cartesi/rollups-database:0.12.0-alpha.20
+    image: cartesi/rollups-database:0.12.0-alpha.37
     environment:
       POSTGRES_PASSWORD: password
     networks:
@@ -39,7 +39,7 @@ services:
 
   evm-reader:
     container_name: evm-reader
-    image: cartesi/rollups-runtime:0.12.0-alpha.20
+    image: cartesi/rollups-runtime:0.12.0-alpha.37
     command: cartesi-rollups-evm-reader --default-block latest
     depends_on:
       database:
@@ -53,7 +53,7 @@ services:
 
   advancer:
     container_name: advancer
-    image: cartesi/rollups-runtime:0.12.0-alpha.20
+    image: cartesi/rollups-runtime:0.12.0-alpha.37
     command: cartesi-rollups-advancer
     depends_on:
       database:
@@ -73,7 +73,7 @@ services:
 
   validator:
     container_name: validator
-    image: cartesi/rollups-runtime:0.12.0-alpha.20
+    image: cartesi/rollups-runtime:0.12.0-alpha.37
     command: cartesi-rollups-validator
     depends_on:
       database:
@@ -87,7 +87,7 @@ services:
 
   claimer:
     container_name: claimer
-    image: cartesi/rollups-runtime:0.12.0-alpha.20
+    image: cartesi/rollups-runtime:0.12.0-alpha.37
     command: cartesi-rollups-claimer
     depends_on:
       database:
@@ -103,7 +103,7 @@ services:
 
   jsonrpc-api:
     container_name: jsonrpc-api
-    image: cartesi/rollups-runtime:0.12.0-alpha.20
+    image: cartesi/rollups-runtime:0.12.0-alpha.37
     command: cartesi-rollups-jsonrpc-api
     depends_on:
       database:
